@@ -1,4 +1,4 @@
-# epicentrek_test
+# EpicentreK
 
 ### Завдання:
  - Зверстати html-cторінку по [PSD-макету](https://drive.google.com/uc?authuser=0&id=1Dohak88MdkD_NJ8mMD3cmqj3fAvC_VDH&export=download) або в [zeplin](https://zpl.io/VDEX93l);
