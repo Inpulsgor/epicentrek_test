@@ -1,7 +1,5 @@
 # epicentrek_test
 
-#      ![enter image description here](https://epicentrk.ua/local/templates/shop27-ua-foundation/assets/images/markerE.png) Тестове завдання посаду "Frontend developer"
-
 ### Завдання:
  - Зверстати html-cторінку по [PSD-макету](https://drive.google.com/uc?authuser=0&id=1Dohak88MdkD_NJ8mMD3cmqj3fAvC_VDH&export=download) або в [zeplin](https://zpl.io/VDEX93l);
  - дані для наповнення беремо із [JSON](https://drive.google.com/file/d/1HCpjoIwo_EvLjslyCmifTh_tOXwEKbaC/view?usp=sharing;);
