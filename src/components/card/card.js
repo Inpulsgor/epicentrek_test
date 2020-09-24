@@ -16,3 +16,27 @@ function toggleBurger(e) {
     sideBar.classList.toggle('expanded');
   }
 }
+
+function getSlider() {
+  const sliders = document.querySelectorAll('.glide');
+
+  for (let i = 0; i < sliders.length; i += 1) {
+    const glide = new Glide(sliders[i], {
+      type: 'carousel',
+      perView: 4,
+      dots: '#dots',
+      autoplay: 6000,
+      breakpoints: {
+        1279: {
+          gap: 26,
+          perView: 2,
+        },
+        767: {
+          gap: 30,
+          perView: 1,
+        },
+      },
+    });
+    glide.mount();
+  }
+}
