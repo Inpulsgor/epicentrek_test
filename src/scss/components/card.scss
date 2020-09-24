@@ -6,6 +6,11 @@
   box-shadow: $card-shadow;
   padding-bottom: 39px;
 
+  @include for-tablet-up {
+    width: 800px;
+    min-height: 600px;
+  }
+
   &__heading {
     display: flex;
     flex-wrap: wrap;

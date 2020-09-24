@@ -1,0 +1,19 @@
+@import '../mixins.scss';
+
+.side-bar {
+  @include for-phone-only {
+    z-index: 1;
+    transition: right 0.7s ease-in-out;
+    background: #fff;
+    color: white;
+    height: 100vh;
+    right: -68vw;
+    position: fixed;
+    top: 0;
+    width: 68vw;
+  }
+}
+
+.expanded {
+  right: 0;
+}
