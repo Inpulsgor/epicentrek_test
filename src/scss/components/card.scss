@@ -222,7 +222,7 @@
 
 .arrows {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: column;
   height: 100%;
   width: 10px;
@@ -231,7 +231,7 @@
 .arrow-up,
 .arrow-down {
   border: none;
-  height: 45%;
+  height: 40%;
   background-position: center;
   background-repeat: no-repeat;
 }
