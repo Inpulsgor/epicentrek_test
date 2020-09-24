@@ -1,0 +1,112 @@
+{
+	"ITEMS": [
+		{
+			"ID": 1100761,
+			"PRICE": "₴5999",
+			"RAT": {
+				"RATING": 4.5,
+				"REVIEWS": 122
+			},
+			"IMAGES": [
+				"https://cdn.27.ua/499/cb/d9/1100761_10.jpeg",
+				"https://cdn.27.ua/499/cb/d9/1100761_1.jpeg",
+				"https://cdn.27.ua/499/cb/d9/1100761_9.jpeg"
+			],
+			"NAME": "Huawei P Smart Z 4/64GB blue (1268727)",
+			"DESCRIPTION": "смартфон (з вбудованою батареєю), зарядний пристрій, кабель USB Type-C, короткий посібник користувача, гарантійний талон, інструмент для вилучення карт, навушники, захисна плівка (наклеєна на смартфон)",
+			"MODELS": {
+				"COLORS": [
+					{
+						"ID": 1,
+						"ACTIVE": true,
+						"COLOR": "rgb(0, 53, 129)"
+					},
+					{
+						"ID": 2,
+						"COLOR": "rgb(1, 51, 50)"
+					},
+					{
+						"ID": 3,
+						"COLOR": "rgb(13, 14, 16)"
+					}
+				]
+			},
+			"BRAND": {
+				"NAME": "Huawei",
+				"LOGO": "https://epicentrk.ua/upload/uf/665/screenshot_1.jpg"
+			}
+		},
+		{
+			"ID": 1100762,
+			"PRICE": "₴5999",
+			"RAT": {
+				"RATING": 4.5,
+				"REVIEWS": 122
+			},
+			"IMAGES": [
+				"https://cdn.27.ua/499/cb/d8/1100760_10.jpeg",
+				"https://cdn.27.ua/499/cb/d8/1100760_4.jpeg",
+				"https://cdn.27.ua/499/cb/d8/1100760_7.jpeg"
+			],
+			"NAME": "Huawei P Smart Z 4/64GB Black (1268727)",
+			"DESCRIPTION": "смартфон (з вбудованою батареєю), зарядний пристрій, кабель USB Type-C, короткий посібник користувача, гарантійний талон, інструмент для вилучення карт, навушники, захисна плівка (наклеєна на смартфон)",
+			"MODELS": {
+				"COLORS": [
+					{
+						"ID": 1,
+						"COLOR": "rgb(0, 53, 129)"
+					},
+					{
+						"ID": 2,
+						"COLOR": "rgb(1, 51, 50)"
+					},
+					{
+						"ID": 3,
+						"ACTIVE": true,
+						"COLOR": "rgb(13, 14, 16)"
+					}
+				]
+			},
+			"BRAND": {
+				"NAME": "Huawei",
+				"LOGO": "https://epicentrk.ua/upload/uf/665/screenshot_1.jpg"
+			}
+		},
+		{
+			"ID": 1100763,
+			"PRICE": "₴5999",
+			"RAT": {
+				"RATING": 4.5,
+				"REVIEWS": 122
+			},
+			"IMAGES": [
+				"https://cdn.27.ua/499/cb/da/1100762_10.jpeg",
+				"https://cdn.27.ua/499/cb/da/1100762_3.jpeg",
+				"https://cdn.27.ua/499/cb/da/1100762_9.jpeg"
+			],
+			"NAME": "Huawei P Smart Z 4/64GB Green (1268727)",
+			"DESCRIPTION": "смартфон (з вбудованою батареєю), зарядний пристрій, кабель USB Type-C, короткий посібник користувача, гарантійний талон, інструмент для вилучення карт, навушники, захисна плівка (наклеєна на смартфон)",
+			"MODELS": {
+				"COLORS": [
+					{
+						"ID": 1,
+						"COLOR": "rgb(0, 53, 129)"
+					},
+					{
+						"ID": 2,
+						"ACTIVE": true,
+						"COLOR": "rgb(1, 51, 50)"
+					},
+					{
+						"ID": 3,
+						"COLOR": "rgb(13, 14, 16)"
+					}
+				]
+			},
+			"BRAND": {
+				"NAME": "Huawei",
+				"LOGO": "https://epicentrk.ua/upload/uf/665/screenshot_1.jpg"
+			}
+		}
+	]
+}
