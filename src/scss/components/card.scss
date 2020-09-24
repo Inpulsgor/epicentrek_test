@@ -7,6 +7,9 @@
   padding-bottom: 39px;
 
   &__heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     // width: 354px;
     width: 100%;
     height: 52px;
@@ -15,13 +18,37 @@
     }
 
     &-logo {
-      max-width: 184px;
+      min-width: 184px;
       height: 100%;
       background-color: $card-logo-bg;
       background-image: url('../../images//logo.png');
       background-position: center;
       background-repeat: no-repeat;
-      //   padding: 18px 22px 20px 24px;
+    }
+
+    &-cart {
+      position: relative;
+      width: 22px;
+      border: none;
+      background-image: url('../../images/cart.png');
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-color: transparent;
+      margin-right: 36px;
+
+      &::before {
+        padding-top: 6px;
+        font-size: 12px;
+        content: '2';
+        position: absolute;
+        right: -14px;
+        top: 15px;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        color: #fff;
+        background-color: #536dfe;
+      }
     }
   }
 
@@ -108,7 +135,7 @@
 
 .price-colors {
   width: 100%;
-  max-height: 52px;
+  min-height: 52px;
   display: flex;
   font-weight: wrap;
   justify-content: space-between;
@@ -255,7 +282,7 @@
 }
 
 .hand {
-  width: 23%;
+  width: 16px;
   display: block;
   background-image: url('../../images/hand.png');
   background-repeat: no-repeat;
@@ -270,6 +297,8 @@
 .card__gallery-slides {
   margin: 0 auto;
   width: 22%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .slide:first-child {
