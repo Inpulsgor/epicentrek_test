@@ -9,10 +9,7 @@
   padding-bottom: 39px;
 
   @include for-desktop-up {
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    width: 800px;
+    max-width: 800px;
     min-height: 600px;
     padding-bottom: 46px;
   }
@@ -42,16 +39,14 @@
 
     &__cart {
       @extend %background-img;
-      @include for-phone-only {
-        position: relative;
-        width: 22px;
-        border: none;
-        margin-right: 36px;
-        background-image: url('../../images/cart.png');
-        background-position: bottom;
-      }
+      @extend %border-none;
+      position: relative;
+      width: 22px;
+      margin-right: 36px;
+      background-image: url('../../images/cart.png');
+      background-position: bottom;
 
-      @include for-tablet-up {
+      @include for-desktop-up {
         display: none;
       }
 
@@ -73,17 +68,39 @@
 
   // ------ CARD BODY ------
   &-body {
+    @include for-desktop-up {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+      padding-left: 68px;
+      padding-right: 32px;
+    }
+    // body description
     &__description {
       margin: 0;
-      padding: 0 15px;
+
+      @include for-phone-only {
+        padding: 0 15px;
+      }
 
       @include for-tablet-only {
-        padding: 0 30px;
+        padding: 0 35px;
+      }
+
+      @include for-desktop-up {
+        width: 326px;
       }
     }
-
+    // body gallery
     &__gallery {
       padding: 0 33px;
+
+      @include for-desktop-up {
+        width: 288px;
+        height: 360px;
+        padding: 0;
+        padding-top: 33px;
+      }
     }
   }
 }
@@ -93,6 +110,11 @@
 // description details
 .details {
   margin-bottom: 28px;
+  @include for-desktop-up {
+    margin-bottom: 86px;
+  }
+
+  // details model
   &__model {
     font-size: 12px;
     font-weight: 300;
@@ -100,8 +122,12 @@
     display: block;
     margin-bottom: 24px;
     color: $card-model-fc;
-  }
 
+    @include for-desktop-up {
+      width: 100%;
+    }
+  }
+  // details name
   &__name {
     font-size: 30px;
     font-weight: 700;
@@ -112,15 +138,29 @@
     color: $card-main-fc;
 
     @include for-tablet-only {
-      max-width: 75%;
+      max-width: 85%;
+    }
+
+    @include for-desktop-up {
+      line-height: 1.17;
+      margin-bottom: 24px;
+      width: 65%;
     }
   }
-
+  // details about
   &__about {
     font-size: 14px;
     line-height: 1.64;
     letter-spacing: 0.35px;
     width: 93%;
+
+    @include for-tablet-only {
+      width: 100%;
+    }
+
+    @include for-desktop-up {
+      width: 93%;
+    }
   }
 }
 
@@ -191,7 +231,7 @@
   }
 
   &__button {
-    border: none;
+    @extend %border-none;
     width: 21px;
     height: 21px;
     border-radius: 50%;
@@ -209,7 +249,11 @@
 .quantity {
   @extend %flex-wrap-between;
   max-height: 46px;
-  margin-bottom: 44px;
+  margin-bottom: 42px;
+
+  @include for-desktop-up {
+    margin-bottom: 0;
+  }
 
   &__container {
     @extend %flex-wrap;
@@ -220,6 +264,10 @@
     font-size: 13px;
     margin-right: 9px;
     color: #333333;
+
+    @include for-tablet-only {
+      margin-right: 15px;
+    }
   }
 
   &__counter {
@@ -245,7 +293,7 @@
 
     &-up,
     &-down {
-      border: none;
+      @extend %border-none;
       height: 40%;
       background-position: center;
       background-repeat: no-repeat;
@@ -261,10 +309,10 @@
   }
 
   &__button-add {
+    @extend %border-none;
     line-height: 46px;
     letter-spacing: 0.43px;
     min-width: 147px;
-    border: none;
     color: $card-white;
     background-color: $card-button-bg;
   }
@@ -273,7 +321,7 @@
 // --- BODY GALLERY ---
 // gallery carousel
 .glide {
-  margin-bottom: 61px;
+  margin-bottom: 58px;
 }
 
 .glide__slide {
@@ -295,12 +343,20 @@
   max-width: 24%;
   min-height: 16px;
   margin: 0 auto;
-  margin-bottom: 29px;
+  margin-bottom: 28px;
+
+  @include for-tablet-only {
+    max-width: 17%;
+  }
+
+  @include for-desktop-up {
+    margin-bottom: 36px;
+  }
 
   &__left,
   &__right {
     @extend %background-img;
-    border: none;
+    @extend %border-none;
     width: 12%;
     min-height: 16px;
   }
@@ -331,12 +387,43 @@
   width: 22%;
 
   &__item {
-    border: none;
+    @extend %border-none;
     background-color: #cccccc;
     height: 3px;
     width: 28%;
-
     &:first-child {
+      background-color: #536dfe;
+    }
+  }
+}
+
+// CART ICON
+.cart-desktop {
+  display: none;
+  @extend %background-img;
+  @extend %border-none;
+
+  @include for-desktop-up {
+    display: block;
+    position: absolute;
+    top: 62px;
+    right: 99px;
+    width: 22px;
+    height: 27px;
+    background-position: center;
+    background-image: url('../../images/cart-desktop.png');
+
+    &::before {
+      content: '2';
+      padding-top: 6px;
+      font-size: 12px;
+      position: absolute;
+      right: -14px;
+      top: -10px;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      color: $card-white;
       background-color: #536dfe;
     }
   }

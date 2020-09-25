@@ -87,6 +87,10 @@ button:focus {
   @include for-tablet-only {
     padding: 50px 0;
   }
+
+  @include for-desktop-up {
+    padding: 150px 0;
+  }
 }
 
 // containers
@@ -98,7 +102,7 @@ button:focus {
   }
 
   @include for-tablet-only {
-    width: 600px;
+    width: 580px;
   }
 
   @include for-desktop-up {
