@@ -6,12 +6,23 @@
     position: fixed;
     z-index: 5;
     height: 100vh;
-    right: -68vw;
+    right: -283px;
     top: 0;
-    width: 68vw;
+    width: 283px;
     color: $card-white;
     background-color: $card-white;
     transition: right 0.7s ease-in-out;
+
+    @include for-tablet-up {
+      right: -370px;
+      width: 370px;
+      padding: 0 65px 0 75px;
+    }
+
+    @include for-desktop-up {
+      width: 370px;
+      padding: 0 65px 0 75px;
+    }
   }
 }
 
@@ -23,7 +34,7 @@
   width: 100vw;
   height: 100vh;
   transition: background-color 0.7s ease-in-out;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .expanded {

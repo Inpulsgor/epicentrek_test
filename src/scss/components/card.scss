@@ -4,12 +4,14 @@
 
 // CARD
 .card {
+  box-sizing: border-box;
+  overflow: hidden;
   background-color: $card-white;
   box-shadow: $card-shadow;
   padding-bottom: 39px;
 
   @include for-desktop-up {
-    max-width: 800px;
+    width: 800px;
     min-height: 600px;
     padding-bottom: 46px;
   }
@@ -111,7 +113,7 @@
 .details {
   margin-bottom: 28px;
   @include for-desktop-up {
-    margin-bottom: 86px;
+    margin-bottom: 75px;
   }
 
   // details model
@@ -133,7 +135,7 @@
     font-weight: 700;
     letter-spacing: 0.75px;
     line-height: 1.2;
-    max-width: 65%;
+    max-width: 75%;
     margin-bottom: 26px;
     color: $card-main-fc;
 
@@ -144,7 +146,7 @@
     @include for-desktop-up {
       line-height: 1.17;
       margin-bottom: 24px;
-      width: 65%;
+      max-width: 80%;
     }
   }
   // details about
@@ -208,7 +210,7 @@
   @extend %flex-wrap-between;
   width: 100%;
   min-height: 52px;
-  margin-bottom: 44px;
+  margin-bottom: 25px;
 
   &__amount {
     font-size: 26px;

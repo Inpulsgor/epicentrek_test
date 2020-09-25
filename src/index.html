@@ -12,11 +12,18 @@
   <main class="main">
     <div class="container">
       <!-- CART DESKTOP ICON-->
-      <button class="cart-desktop"></button>
+      <button class="cart-desktop js-cart-icon"></button>
 
       <!-- SIDEBAR-->
       <div class="sidebar">
-        <div class="sidebar__cart js-cart"></div>
+        <div class="sidebar__cart js-sidebar">
+          <button class="sidebar__icon"></button>
+          <ul class="sidebar__list">
+          </ul>
+          <p class="sidebar__description">Your order qualifies for FREE Shipping Choose this option at checkout.
+            See details</p>
+          <button class="sidebar__button">Proceed to checkout</button>
+        </div>
         <div class="sidebar__overlay js-overlay"></div>
       </div>
 
@@ -24,24 +31,24 @@
       <div class="card">
         <!-- HEADING -->
         <div class="card-heading">
-          <div class="card-heading__logo"></div>
-          <button class="card-heading__cart"></button>
+          <div class="card-heading__logo js-cart"></div>
+          <button type='button' class="card-heading__cart js-heading-cart"></button>
         </div>
         <!-- BODY -->
         <div class="card-body">
           <!-- BODY description -->
           <div class="card-body__description body-description">
             <!-- details -->
-            <div class="body-description__details details">
-              <span class="details__model">Model: 505795</span>
+            <div class="body-description__details details js-details">
+              <!-- <span class="details__model">Model: 505795</span>
               <h3 class="details__name">MOMENTUM® Wireless Black</h3>
               <p class="details__about">Peak performance with active noise cancelation. Sennheiser's new MOMENTUM
                 Wireless -
                 Closed circumaural
-                headphone featuring Bluetooth® wireless technology and NoiseGard Hybrid active noise cancelation</p>
+                headphone featuring Bluetooth® wireless technology and NoiseGard Hybrid active noise cancelation</p> -->
             </div>
             <!-- rank & reviews -->
-            <div class="body-description__rating rating">
+            <div class="body-description__rating rating js-rating">
               <ul class="rating__circles">
                 <li class="rating__circle"></li>
                 <li class="rating__circle"></li>
@@ -49,19 +56,19 @@
                 <li class="rating__circle"></li>
                 <li class="rating__circle"></li>
               </ul>
-              <span class="rating__rank">4.25</span>
-              <span class="rating__reviews">(153 reviews)</span>
+              <!-- <span class="rating__rank">4.25</span>
+              <span class="rating__reviews">(153 reviews)</span> -->
             </div>
             <!-- price & colors -->
-            <div class="body-description__price price">
-              <span class="price__amount js-amount">$499.95</span>
-              <div class="price__color">
+            <div class="body-description__price price js-colors">
+              <span class="price__amount js-amount">₴</span>
+              <!-- <div class="price__color">
                 <span class="price__text">Choose your colors:</span>
                 <div class="price__buttons">
                   <button class="price__button"></button>
                   <button class="price__button"></button>
                 </div>
-              </div>
+              </div> -->
             </div>
             <!-- quantity & add button -->
             <div class="body-description__quantity quantity">
