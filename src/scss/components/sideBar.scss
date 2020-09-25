@@ -1,17 +1,26 @@
 @import '../mixins.scss';
 
+.overlay {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transition: background-color 0.7s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 .side-bar {
-  @include for-phone-only {
-    z-index: 1;
-    transition: right 0.7s ease-in-out;
-    background: #fff;
-    color: white;
-    height: 100vh;
-    right: -68vw;
-    position: fixed;
-    top: 0;
-    width: 68vw;
-  }
+  position: fixed;
+  z-index: 5;
+  background-color: #fff;
+  color: #fff;
+  height: 100vh;
+  right: -68vw;
+  top: 0;
+  width: 68vw;
+  transition: right 0.7s ease-in-out;
 }
 
 .expanded {
