@@ -1,22 +1,23 @@
 import Glide from '@glidejs/glide';
+
 import '../../scss/components/card.scss';
-import '../../scss/components/sideBar.scss';
+import '../../scss/components/sidebar.scss';
 
 // ================= QUERY SELECTOR =================
 // side bar
-const addButton = document.querySelector('.add-button');
-const sideBar = document.querySelector('.side-bar');
-const overlay = document.querySelector('.side-bar__overlay');
+const addToCartBtn = document.querySelector('.js-btn-add');
+const sideBar = document.querySelector('.js-cart');
+const overlay = document.querySelector('.js-overlay');
 // quantity
-const counter = document.querySelector('.js-counter');
-const price = document.querySelector('.price');
+const counter = document.querySelector('.js-number');
+const price = document.querySelector('.js-amount');
 const increment = document.querySelector("[data-action='increment']");
 const decrement = document.querySelector("[data-action='decrement']");
 
 // ================= ADD/REMOVE LISTENER =================
 // add listener
 function addListener() {
-  addButton.addEventListener('click', openCart);
+  addToCartBtn.addEventListener('click', openCart);
   overlay.addEventListener('click', closeCart);
   increment.addEventListener('click', increase);
   decrement.addEventListener('click', decrease);
@@ -24,7 +25,7 @@ function addListener() {
 addListener();
 // remove listener
 function removeListener() {
-  addButton.removeEventListener('click', openCart);
+  addToCartBtn.removeEventListener('click', openCart);
   overlay.removeEventListener('click', closeCart);
   window.removeEventListener('keydown', closeByPressEsc);
 }
@@ -54,7 +55,7 @@ function closeByPressEsc(e) {
   }
 }
 // close on close button
-function closeModalHandler(e) {
+function closeOnButtonClick(e) {
   if (e.target.nodeName === 'BUTTON') {
     removeClass();
     removeListener();

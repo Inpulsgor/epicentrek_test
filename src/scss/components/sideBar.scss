@@ -1,4 +1,19 @@
 @import '../mixins.scss';
+@import '../variables.scss';
+
+.sidebar {
+  &__cart {
+    position: fixed;
+    z-index: 5;
+    height: 100vh;
+    right: -68vw;
+    top: 0;
+    width: 68vw;
+    color: $card-white;
+    background-color: $card-white;
+    transition: right 0.7s ease-in-out;
+  }
+}
 
 .overlay {
   position: absolute;
@@ -9,18 +24,6 @@
   height: 100vh;
   transition: background-color 0.7s ease-in-out;
   background-color: rgba(0, 0, 0, 0.8);
-}
-
-.side-bar {
-  position: fixed;
-  z-index: 5;
-  background-color: #fff;
-  color: #fff;
-  height: 100vh;
-  right: -68vw;
-  top: 0;
-  width: 68vw;
-  transition: right 0.7s ease-in-out;
 }
 
 .expanded {

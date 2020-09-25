@@ -11,72 +11,74 @@
 <body>
   <main class="main">
     <div class="container">
-      <!-- SIDE BAR-->
-      <div class="side-bar"></div>
-      <div class="side-bar__overlay"></div>
 
-      <!-- </div> -->
+      <!-- SIDEBAR-->
+      <div class="sidebar">
+        <div class="sidebar__cart js-cart"></div>
+        <div class="sidebar__overlay js-overlay"></div>
+      </div>
 
       <!-- CARD -->
       <div class="card">
-        <!-- card logo -->
-        <div class="card__heading">
-          <div class="card__heading-logo"></div>
-          <button class="card__heading-cart"></button>
+        <!-- HEADING -->
+        <div class="card-heading">
+          <div class="card-heading__logo"></div>
+          <button class="card-heading__cart"></button>
         </div>
-        <!-- card content -->
-        <div class="card__content">
-          <!-- card content description -->
-          <div class="card__content-description">
-            <!-- description -->
-            <div class="description">
-              <span class="model">Model: 505795</span>
-              <h3 class="title">MOMENTUM® Wireless Black</h3>
-              <p class="about">Peak performance with active noise cancelation. Sennheiser's new MOMENTUM Wireless -
-                Closed
-                circumaural
+        <!-- BODY -->
+        <div class="card-body">
+          <!-- BODY description -->
+          <div class="card-body__description body-description">
+            <!-- details -->
+            <div class="body-description__details details">
+              <span class="details__model">Model: 505795</span>
+              <h3 class="details__name">MOMENTUM® Wireless Black</h3>
+              <p class="details__about">Peak performance with active noise cancelation. Sennheiser's new MOMENTUM
+                Wireless -
+                Closed circumaural
                 headphone featuring Bluetooth® wireless technology and NoiseGard Hybrid active noise cancelation</p>
             </div>
-            <!-- score & reviews -->
-            <div class="score">
-              <ul class="circles">
-                <li class="circle"></li>
-                <li class="circle"></li>
-                <li class="circle"></li>
-                <li class="circle"></li>
-                <li class="circle"></li>
+            <!-- rank & reviews -->
+            <div class="body-description__rating rating">
+              <ul class="rating__circles">
+                <li class="rating__circle"></li>
+                <li class="rating__circle"></li>
+                <li class="rating__circle"></li>
+                <li class="rating__circle"></li>
+                <li class="rating__circle"></li>
               </ul>
-              <span class="rank">4.25</span>
-              <span class="reviews">(153 reviews)</span>
+              <span class="rating__rank">4.25</span>
+              <span class="rating__reviews">(153 reviews)</span>
             </div>
             <!-- price & colors -->
-            <div class="price-colors">
-              <span class="price">$499.95</span>
-              <div class="color">
-                <span class="color-text">Choose your colors:</span>
-                <div class="color-buttons">
-                  <button class="colors"></button>
-                  <button class="colors"></button>
+            <div class="body-description__price price">
+              <span class="price__amount js-amount">$499.95</span>
+              <div class="price__color">
+                <span class="price__text">Choose your colors:</span>
+                <div class="price__buttons">
+                  <button class="price__button"></button>
+                  <button class="price__button"></button>
                 </div>
               </div>
             </div>
             <!-- quantity & add button -->
-            <div class="quantity-btn">
-              <div class="quantity">
-                <p class="quantity-text">Quantity</p>
-                <div class="quantity-counter">
-                  <span class="number js-counter">1</span>
+            <div class="body-description__quantity quantity">
+              <div class="quantity__container">
+                <p class="quantity__text">Quantity</p>
+                <div class="quantity__counter">
+                  <span class="quantity__counter-number js-number">1</span>
                 </div>
-                <div class="arrows">
-                  <button data-action="increment" class="arrow-up"></button>
-                  <button data-action="decrement" class="arrow-down"></button>
+                <div class="quantity__arrow">
+                  <button class="quantity__arrow-up" data-action="increment"></button>
+                  <button class="quantity__arrow-down" data-action="decrement"></button>
                 </div>
               </div>
-              <button class="add-button">Add to Cart</button>
+              <button class="quantity__button-add js-btn-add">Add to Cart</button>
             </div>
           </div>
-          <!-- card content gallery -->
-          <div class="card__content-gallery">
+          <!-- BODY gallery -->
+          <div class="card-body__gallery body-gallery">
+            <!-- gallery images carousel -->
             <div class="glide">
               <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
@@ -86,17 +88,17 @@
                 </ul>
               </div>
             </div>
-            <!-- gallery arrow buttons -->
-            <div class="card__gallery-buttons">
-              <button class="arrow-left"></button>
-              <span class="hand"></span>
-              <button class="arrow-right"></button>
+            <!-- gallery swipe arrow -->
+            <div class="body-gallery__swipe swipe">
+              <button class="swipe__left"></button>
+              <span class="swipe__hand"></span>
+              <button class="swipe__right"></button>
             </div>
-            <!-- gallery slides -->
-            <div class="card__gallery-slides">
-              <button class="slide"></button>
-              <button class="slide"></button>
-              <button class="slide"></button>
+            <!-- gallery navigation -->
+            <div class="body-gallery__navigation navigation">
+              <button class="navigation__item"></button>
+              <button class="navigation__item"></button>
+              <button class="navigation__item"></button>
             </div>
           </div>
 

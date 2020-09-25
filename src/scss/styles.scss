@@ -81,6 +81,10 @@ button:focus {
   height: 100%;
 
   @include for-phone-only {
+    padding: 15px 0 38px;
+  }
+
+  @include for-tablet-only {
     padding: 50px 0;
   }
 }
@@ -88,13 +92,13 @@ button:focus {
 // containers
 .container {
   margin: 0 auto;
+
   @include for-phone-only {
     width: 354px;
-    // width: 85%;
   }
 
   @include for-tablet-only {
-    width: 600px;
+    width: 660px;
   }
 
   @include for-desktop-up {
