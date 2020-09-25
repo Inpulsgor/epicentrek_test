@@ -24,6 +24,10 @@
     height: 52px;
 
     @include for-phone-only {
+      margin-bottom: 54px;
+    }
+
+    @include for-tablet-only {
       margin-bottom: 45px;
     }
 
@@ -69,11 +73,13 @@
 
   // ------ CARD BODY ------
   &-body {
-    margin-bottom: 29px;
-
     &__description {
       margin: 0;
       padding: 0 15px;
+
+      @include for-tablet-only {
+        padding: 0 30px;
+      }
     }
 
     &__gallery {
@@ -86,7 +92,7 @@
 
 // description details
 .details {
-  margin-bottom: 29px;
+  margin-bottom: 28px;
   &__model {
     font-size: 12px;
     font-weight: 300;
@@ -99,10 +105,15 @@
   &__name {
     font-size: 30px;
     font-weight: 700;
+    letter-spacing: 0.75px;
     line-height: 1.2;
-    max-width: 62%;
-    margin-bottom: 30px;
+    max-width: 65%;
+    margin-bottom: 26px;
     color: $card-main-fc;
+
+    @include for-tablet-only {
+      max-width: 75%;
+    }
   }
 
   &__about {
@@ -117,7 +128,7 @@
 .rating {
   @extend %flex-wrap;
   vertical-align: baseline;
-  margin-bottom: 25px;
+  margin-bottom: 24px;
 
   &__circles {
     @extend %flex-wrap-between;
@@ -157,7 +168,7 @@
   @extend %flex-wrap-between;
   width: 100%;
   min-height: 52px;
-  margin-bottom: 45px;
+  margin-bottom: 44px;
 
   &__amount {
     font-size: 26px;

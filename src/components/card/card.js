@@ -74,7 +74,11 @@ let amount = 499.95;
 // increase quantity +1
 function increase() {
   quantity += 1;
-  counter.textContent = quantity;
+  if (quantity < 10) {
+    counter.innerHTML = `0${quantity}`;
+  } else {
+    counter.innerHTML = quantity;
+  }
   quantityPrice();
 }
 // decrease quantity -1
@@ -82,14 +86,20 @@ function decrease() {
   if (quantity <= 1) {
     return;
   }
+
   quantity -= 1;
-  counter.textContent = quantity;
+  if (quantity < 10) {
+    counter.innerHTML = `0${quantity}`;
+  } else {
+    counter.innerHTML = quantity;
+  }
   quantityPrice();
 }
 // price per quantity
 function quantityPrice() {
   const result = quantity * amount;
-  price.innerHTML = `$${result}`;
+  const rounded = result.toFixed(2);
+  price.innerHTML = `$${rounded}`;
 }
 
 // ================= SLIDER =================
