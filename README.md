@@ -1,8 +1,7 @@
 # EpicentreK
 
 ### Завдання:
-```
- Зверстати html-cторінку по [PSD-макету](https://drive.google.com/uc?authuser=0&id=1Dohak88MdkD_NJ8mMD3cmqj3fAvC_VDH&export=download) або в [zeplin](https://zpl.io/VDEX93l);
+```Зверстати html-cторінку по [PSD-макету](https://drive.google.com/uc?authuser=0&id=1Dohak88MdkD_NJ8mMD3cmqj3fAvC_VDH&export=download) або в [zeplin](https://zpl.io/VDEX93l);
 ```
  - дані для наповнення беремо із [JSON](https://drive.google.com/file/d/1HCpjoIwo_EvLjslyCmifTh_tOXwEKbaC/view?usp=sharing;);
  - зробити адаптацію для мобільних пристроїв;
