@@ -123,9 +123,9 @@ function removeClass() {
 function increase() {
   quantity += 1;
   if (quantity < 10) {
-    counter.innerHTML = `0${quantity}`;
+    counter.setAttribute('value', `0${quantity}`);
   } else {
-    counter.innerHTML = quantity;
+    counter.setAttribute('value', quantity);
   }
   quantityPrice();
 }
@@ -137,9 +137,9 @@ function decrease() {
 
   quantity -= 1;
   if (quantity < 10) {
-    counter.innerHTML = `0${quantity}`;
+    counter.setAttribute('value', `0${quantity}`);
   } else {
-    counter.innerHTML = quantity;
+    counter.setAttribute('value', quantity);
   }
   quantityPrice();
 }
@@ -149,7 +149,7 @@ function quantityPrice() {
   // const rounded = result.toFixed(2);
   amount.innerHTML = `₴${result}`;
 }
-
+console.log(counter);
 // ================= MARKUP =================
 
 const capitalizeWord =
