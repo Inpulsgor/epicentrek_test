@@ -10,12 +10,13 @@ import '../../scss/components/card.scss';
 import '../../scss/components/sidebar.scss';
 import helpers from '../../services/helpers';
 
+let quantity = 1;
 // json data
 const data = items.ITEMS[0];
-console.log(data);
+const dataImages = items.ITEMS[0].IMAGES;
+const priceValue = Number(data.PRICE.slice(1));
 
-let quantity = 1;
-let priceValue = Number(data.PRICE.slice(1));
+console.log(data);
 // ================= QUERY SELECTOR =================
 // side bar
 const cartIconMain = document.querySelector('.js-cart-icon');
@@ -27,6 +28,7 @@ const overlay = document.querySelector('.js-overlay');
 // quantity
 const counter = document.querySelector('.js-number');
 const amount = document.querySelector('.js-amount');
+const amountSidebar = document.querySelector('.js-amount-sidebar');
 const increment = document.querySelector("[data-action='increment']");
 const decrement = document.querySelector("[data-action='decrement']");
 // markup
@@ -163,6 +165,19 @@ function quantityPrice() {
 //   }
 // }
 
+// curIndex = 0;
+// imgDuration = 2000;
+
+// function slideShow() {
+//   document.querySelector('.glide__slide').src = dataImages[curIndex];
+//   curIndex++;
+//   if (curIndex == imgArray.length) {
+//     curIndex = 0;
+//   }
+//   setTimeout('slideShow()', imgDuration);
+// }
+// slideShow();
+
 // ================= MARKUP =================
 
 const capitalizeWord =
@@ -178,9 +193,12 @@ function detailsMarkup() {
     <h3 class="details__name">${cropped}</h3>
     <p class="details__about">${capitalizeWord}</p>`;
 }
+
+// ----------------- render -----------------
 // details
 details.innerHTML = detailsMarkup();
 // price
 price.innerHTML = `₴ ${priceValue}`;
+amountSidebar.innerHTML = `₴ ${priceValue}`;
 // rating
 rating.insertAdjacentHTML('beforeend', ratingMarkup(data));

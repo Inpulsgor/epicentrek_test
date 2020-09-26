@@ -11,30 +11,42 @@
 <body>
   <main class="main">
     <div class="container">
+
       <!-- CART DESKTOP ICON-->
       <button class="cart-desktop js-cart-icon"></button>
 
       <!-- SIDEBAR-->
       <div class="sidebar">
         <div class="sidebar__cart js-sidebar">
-          <button class="sidebar__icon"></button>
-          <ul class="sidebar__list">
-          </ul>
-          <p class="sidebar__description">Your order qualifies for FREE Shipping Choose this option at checkout.
-            See details</p>
-          <button class="sidebar__button">Proceed to checkout</button>
+          <!-- sidebar heading -->
+          <div class="sidebar__heading">
+            <button class="sidebar__heading-icon"></button>
+            <span class="sidebar__heading-text js-subtotal-sidebar">Subtotal (1 item):</span>
+            <h4 class="sidebar__heading-price js-amount-sidebar">₴</h4>
+          </div>
+          <!-- sidebar body -->
+          <div class="sidebar__body">
+            <ul class="sidebar__body-list"></ul>
+          </div>
+          <!-- sidebar footer -->
+          <div class="sidebar__footer">
+            <p class="sidebar__footer-description">Your order qualifies for FREE Shipping Choose this option at
+              checkout.
+              See details</p>
+            <button class="sidebar__footer-button">Proceed to checkout</button>
+          </div>
         </div>
         <div class="sidebar__overlay js-overlay"></div>
       </div>
 
       <!-- CARD -->
       <div class="card">
-        <!-- HEADING -->
+        <!-- CARD HEADING -->
         <div class="card-heading">
           <div class="card-heading__logo js-cart"></div>
           <button type='button' class="card-heading__cart js-heading-cart"></button>
         </div>
-        <!-- BODY -->
+        <!-- CARD BODY -->
         <div class="card-body">
           <!-- BODY description -->
           <div class="card-body__description body-description">
@@ -62,13 +74,13 @@
             <!-- price & colors -->
             <div class="body-description__price price js-colors">
               <span class="price__amount js-amount">₴</span>
-              <!-- <div class="price__color">
+              <div class="price__color">
                 <span class="price__text">Choose your colors:</span>
                 <div class="price__buttons">
                   <button class="price__button"></button>
                   <button class="price__button"></button>
                 </div>
-              </div> -->
+              </div>
             </div>
             <!-- quantity & add button -->
             <div class="body-description__quantity quantity">

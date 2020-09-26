@@ -323,6 +323,9 @@
 // --- BODY GALLERY ---
 // gallery carousel
 .glide {
+  @include for-phone-only {
+    margin-bottom: 54px;
+  }
   margin-bottom: 58px;
 }
 
