@@ -205,6 +205,7 @@ new Glide('.glide', {
 // ================= COLORS =================
 
 function setColor(e) {
+  if (e.currentTarget === e.target) return;
   const activeLink = e.currentTarget.querySelector('.price__button_active');
 
   if (activeLink) {
