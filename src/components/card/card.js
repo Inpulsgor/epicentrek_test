@@ -25,7 +25,7 @@ const priceValue = Number(data.PRICE.slice(1));
 console.log(data);
 // ================= QUERY SELECTOR =================
 // side bar
-const colorBtn = document.querySelector('.price__button');
+const colorBtn = document.querySelector('.price__buttons');
 const slides = document.querySelector('.js-slides');
 const brand = document.querySelector('.js-brand');
 const cartIconMain = document.querySelector('.js-cart-icon');
@@ -203,6 +203,10 @@ new Glide('.glide', {
 }).mount({ Controls, Autoplay });
 
 // ================= COLORS =================
+
+const defaultSelected = colorBtn.childNodes[0].classList.add(
+  'price__button_active',
+);
 
 function setColor(e) {
   if (e.currentTarget === e.target) return;
