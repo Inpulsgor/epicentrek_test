@@ -118,6 +118,7 @@ function removeClass() {
   overlay.classList.remove('overlay');
 }
 
+console.log(counter.getAttribute.value);
 // ================= QUANTITY/PRICE =================
 // increase quantity +1
 function increase() {
