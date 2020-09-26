@@ -19,6 +19,7 @@ const priceValue = Number(data.PRICE.slice(1));
 console.log(data);
 // ================= QUERY SELECTOR =================
 // side bar
+const brand = document.querySelector('.js-brand');
 const cartIconMain = document.querySelector('.js-cart-icon');
 const cartIconHeading = document.querySelector('.js-heading-cart');
 const addToCartBtn = document.querySelector('.js-btn-add'); //! not used
@@ -194,7 +195,16 @@ function detailsMarkup() {
     <p class="details__about">${capitalizeWord}</p>`;
 }
 
+function brandMarkup() {
+  return `
+      <img src="${data.BRAND.LOGO}" class="card-heading__logo">
+  `;
+  // <span class="card-heading__name">${data.BRAND.NAME}</span>;
+}
+
 // ----------------- render -----------------
+// brandName
+brand.innerHTML = brandMarkup();
 // details
 details.innerHTML = detailsMarkup();
 // price

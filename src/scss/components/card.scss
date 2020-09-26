@@ -30,13 +30,34 @@
       margin-bottom: 45px;
     }
 
-    &__logo {
+    &__brand {
       @extend %background-img;
-      min-width: 184px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 52px;
+      max-width: 184px;
       height: 100%;
-      background-position: center;
-      background-color: $card-logo-bg;
-      background-image: url('../../images//logo.png');
+      text-align: center;
+      color: $card-white;
+      background-color: $card-white;
+      // background-color: $card-logo-bg;
+      // background-position: center;
+      // background-image: url('../../images//logo.png');
+
+      @include for-phone-s {
+        max-width: 52%;
+      }
+    }
+
+    &__logo {
+      width: 60%;
+      margin: 0 auto;
+      min-height: auto;
+      vertical-align: bottom;
+
+      @include for-phone-s {
+        width: 70%;
+      }
     }
 
     &__cart {
