@@ -50,6 +50,7 @@ const price = document.querySelector('.js-amount');
 // add listener
 addListener();
 function addListener() {
+  colors.addEventListener('click', setColor);
   addToCartBtn.addEventListener('click', pressAddBtn);
   cartIconHeading.addEventListener('click', headingCart);
   cartIconMain.addEventListener('click', openCart);
@@ -202,12 +203,9 @@ new Glide('.glide', {
 }).mount({ Controls, Autoplay });
 
 // ================= COLORS =================
-colors.addEventListener('click', setColor);
 
 function setColor(e) {
   const activeLink = e.currentTarget.querySelector('.price__button_active');
-  console.log(e.target);
-  console.log(e.currentTarget);
 
   if (activeLink) {
     activeLink.classList.remove('price__button_active');
