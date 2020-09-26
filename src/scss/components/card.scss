@@ -265,11 +265,16 @@
     border-radius: 50%;
     background-color: #e8e6e3;
 
-    &:not(:last-of-type) {
-      margin-right: 11px;
-      background-color: #3c383a;
+    &_active {
       border: solid 2px$card-white;
       box-shadow: 0 0 4px 1px $main-bg;
+    }
+
+    &:not(:last-of-type) {
+      margin-right: 11px;
+      // background-color: #3c383a;
+      // border: solid 2px$card-white;
+      // box-shadow: 0 0 4px 1px $main-bg;
     }
   }
 }
@@ -439,9 +444,6 @@
     background-color: #cccccc;
     height: 3px;
     width: 28%;
-    &:first-child {
-      background-color: #536dfe;
-    }
   }
 }
 
@@ -475,4 +477,9 @@
       background-color: #536dfe;
     }
   }
+}
+
+.glide__bullet--active {
+  transition: background-color 0s ease-in-out;
+  background-color: #536dfe;
 }

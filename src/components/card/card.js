@@ -7,11 +7,11 @@ import Glide, {
 import items from '../../services/ITEMS.json';
 import ratingMarkup from './templates/rating.hbs';
 import imagesTemplate from './templates/images.hbs';
-import colorsMarkup from './templates/colors.hbs'; //!
 // import detailsMarkup from './templates/details.hbs';
 import helpers from '../../services/helpers';
 
 import '../../scss/glide/glide.core.scss';
+// import '../../scss/glide/glide.theme.scss';
 import '../../scss/components/card.scss';
 import '../../scss/components/sidebar.scss';
 
@@ -22,10 +22,10 @@ const dataImages = items.ITEMS[0];
 const dataColors = items.ITEMS[0].MODELS.COLORS;
 const priceValue = Number(data.PRICE.slice(1));
 
-console.log(dataColors);
 console.log(data);
 // ================= QUERY SELECTOR =================
 // side bar
+const colorBtn = document.querySelector('.price__button');
 const slides = document.querySelector('.js-slides');
 const brand = document.querySelector('.js-brand');
 const cartIconMain = document.querySelector('.js-cart-icon');
@@ -43,7 +43,7 @@ const decrement = document.querySelector("[data-action='decrement']");
 // markup
 const details = document.querySelector('.js-details');
 const rating = document.querySelector('.js-rating'); // before end
-const colors = document.querySelector('.js-colors'); //! not used
+const colors = document.querySelector('.js-colors');
 const price = document.querySelector('.js-amount');
 
 // ================= ADD/REMOVE LISTENER =================
@@ -172,14 +172,15 @@ function brandMarkup() {
 }
 
 function colorBtnsMarkup() {
-  dataColors.map(color => console.log(color));
-  return `<button class="price__button"></button>`;
+  const res = dataColors.reduce((acc, color) => {
+    return (acc += `<button style="background-color: ${color.COLOR}" class="price__button"></button>`);
+  }, '');
+  return res;
 }
-colorBtnsMarkup();
 
 // ----------------- render -----------------
 // colors
-// colors.innerHTML = colorsMarkup(dataColors);
+colors.insertAdjacentHTML('beforeend', colorBtnsMarkup());
 // slide images
 slides.innerHTML = imagesTemplate(dataImages);
 // brandName
@@ -200,7 +201,17 @@ new Glide('.glide', {
   hoverpause: true,
 }).mount({ Controls, Autoplay });
 
-{
-  /* <button class="price__button"></button>
-<button class="price__button"></button> */
+// ================= COLORS =================
+colors.addEventListener('click', setColor);
+
+function setColor(e) {
+  const activeLink = e.currentTarget.querySelector('.price__button_active');
+  console.log(e.target);
+  console.log(e.currentTarget);
+
+  if (activeLink) {
+    activeLink.classList.remove('price__button_active');
+  }
+
+  e.target.classList.add('price__button_active');
 }
