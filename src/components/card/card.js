@@ -7,11 +7,9 @@ import Glide, {
 import items from '../../services/ITEMS.json';
 import ratingMarkup from './templates/rating.hbs';
 import imagesTemplate from './templates/images.hbs';
-// import detailsMarkup from './templates/details.hbs';
 import helpers from '../../services/helpers';
 
 import '../../scss/glide/glide.core.scss';
-// import '../../scss/glide/glide.theme.scss';
 import '../../scss/components/card.scss';
 import '../../scss/components/sidebar.scss';
 
@@ -22,7 +20,7 @@ const dataImages = items.ITEMS[0];
 const dataColors = items.ITEMS[0].MODELS.COLORS;
 const priceValue = Number(data.PRICE.slice(1));
 
-console.log(data);
+// console.log(data);
 // ================= QUERY SELECTOR =================
 // side bar
 const colorBtn = document.querySelector('.price__buttons');
@@ -31,12 +29,12 @@ const brand = document.querySelector('.js-brand');
 const cartIconMain = document.querySelector('.js-cart-icon');
 const cartIconHeading = document.querySelector('.js-heading-cart');
 const addToCartBtn = document.querySelector('.js-btn-add'); //! not used
-const sidebarUl = document.querySelector('.sidebar__list'); //! not used
+// const sidebarUl = document.querySelector('.sidebar__list'); //! not used
 const sideBar = document.querySelector('.js-sidebar');
 const overlay = document.querySelector('.js-overlay');
 // quantity
 const counter = document.querySelector('.js-number');
-const amount = document.querySelector('.js-amount');
+const price = document.querySelector('.js-amount');
 const amountSidebar = document.querySelector('.js-amount-sidebar');
 const increment = document.querySelector("[data-action='increment']");
 const decrement = document.querySelector("[data-action='decrement']");
@@ -44,12 +42,11 @@ const decrement = document.querySelector("[data-action='decrement']");
 const details = document.querySelector('.js-details');
 const rating = document.querySelector('.js-rating'); // before end
 const colors = document.querySelector('.js-colors');
-const price = document.querySelector('.js-amount');
-
 // ================= ADD/REMOVE LISTENER =================
 // add listener
 addListener();
 function addListener() {
+  counter.addEventListener('input', getInputValue);
   colors.addEventListener('click', setColor);
   addToCartBtn.addEventListener('click', pressAddBtn);
   cartIconHeading.addEventListener('click', headingCart);
@@ -117,12 +114,14 @@ function removeClass() {
   sideBar.classList.remove('expanded');
   overlay.classList.remove('overlay');
 }
-
-console.log(counter.getAttribute.value);
 // ================= QUANTITY/PRICE =================
 // increase quantity +1
 function increase() {
+  if (quantity >= 99) {
+    return;
+  }
   quantity += 1;
+
   if (quantity < 10) {
     counter.setAttribute('value', `0${quantity}`);
   } else {
@@ -137,6 +136,7 @@ function decrease() {
   }
 
   quantity -= 1;
+
   if (quantity < 10) {
     counter.setAttribute('value', `0${quantity}`);
   } else {
@@ -148,10 +148,19 @@ function decrease() {
 function quantityPrice() {
   const result = quantity * priceValue;
   // const rounded = result.toFixed(2);
-  amount.innerHTML = `₴${result}`;
+  price.textContent = `₴${result}`;
+  // counter.textContent = quantity;
+}
+
+function getInputValue(e) {
+  if (isNaN(e.currentTarget.value)) {
+    return;
+  }
+  quantity = Number(e.currentTarget.value);
+  counter.setAttribute('value', `0${quantity}`);
+  quantityPrice();
 }
 // ================= MARKUP =================
-
 const capitalizeWord =
   data.DESCRIPTION.charAt(0).toUpperCase() + data.DESCRIPTION.slice(1);
 
@@ -178,7 +187,6 @@ function colorBtnsMarkup() {
   }, '');
   return res;
 }
-
 // ----------------- render -----------------
 // colors
 colors.insertAdjacentHTML('beforeend', colorBtnsMarkup());
@@ -189,11 +197,10 @@ brand.innerHTML = brandMarkup();
 // details
 details.innerHTML = detailsMarkup();
 // price
-price.innerHTML = `₴ ${priceValue}`;
-amountSidebar.innerHTML = `₴ ${priceValue}`;
+price.textContent = `₴${priceValue}`;
+amountSidebar.innerHTML = `₴${priceValue}`;
 // rating
 rating.insertAdjacentHTML('beforeend', ratingMarkup(data));
-
 // ================= SLIDER =================
 new Glide('.glide', {
   type: 'carousel',
@@ -201,9 +208,7 @@ new Glide('.glide', {
   autoplay: 3000,
   hoverpause: true,
 }).mount({ Controls, Autoplay });
-
 // ================= COLORS =================
-
 const defaultSelected = colorBtn.childNodes[0].classList.add(
   'price__button_active',
 );

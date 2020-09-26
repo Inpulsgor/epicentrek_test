@@ -65,7 +65,7 @@
             </div>
             <!-- price & colors -->
             <div class="body-description__price price">
-              <span class="price__amount js-amount">₴</span>
+              <span class="price__amount js-amount"></span>
               <div class="price__color">
                 <span class="price__text">Choose your colors:</span>
                 <div class="price__buttons js-colors"></div>
@@ -76,7 +76,8 @@
               <div class="quantity__container">
                 <p class="quantity__text">Quantity</p>
                 <div class="quantity__counter">
-                  <input readonly value="01" type="text" class="quantity__counter-number js-number">
+                  <input value="01" type="text" min="1" max="99" maxlength="2"
+                    class="quantity__counter-number js-number">
                 </div>
                 <div class="quantity__arrow">
                   <button class="quantity__arrow-up" data-action="increment"></button>
