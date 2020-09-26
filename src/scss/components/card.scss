@@ -139,6 +139,11 @@
     margin-bottom: 26px;
     color: $card-main-fc;
 
+    @include for-phone-s {
+      max-width: 100%;
+      font-size: 29px;
+    }
+
     @include for-tablet-only {
       max-width: 90%;
     }
@@ -293,14 +298,6 @@
     height: 100%;
     width: 10px;
 
-    &-up,
-    &-down {
-      @extend %border-none;
-      height: 40%;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
     &-up {
       background: url('../../images/angle-up-solid.svg');
     }
@@ -308,15 +305,28 @@
     &-down {
       background: url('../../images/angle-down-solid.svg');
     }
+
+    &-up,
+    &-down {
+      @extend %border-none;
+      height: 40%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
   }
 
   &__button-add {
     @extend %border-none;
+    min-width: 147px;
     line-height: 46px;
     letter-spacing: 0.43px;
-    min-width: 147px;
     color: $card-white;
     background-color: $card-button-bg;
+
+    @include for-phone-s {
+      min-width: 37%;
+      font-size: 13px;
+    }
   }
 }
 
@@ -345,10 +355,14 @@
 // gallery swipe
 .swipe {
   @extend %flex-wrap-between;
-  max-width: 24%;
+  max-width: 25%;
   min-height: 16px;
   margin: 0 auto;
   margin-bottom: 28px;
+
+  @include for-phone-s {
+    max-width: 35%;
+  }
 
   @include for-tablet-only {
     max-width: 17%;

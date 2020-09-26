@@ -17,6 +17,11 @@
     background-color: $card-white;
     transition: right 0.7s ease-in-out;
 
+    @include for-phone-s {
+      right: -85vw;
+      width: 85vw;
+    }
+
     @include for-tablet-up {
       right: -370px;
       width: 370px;

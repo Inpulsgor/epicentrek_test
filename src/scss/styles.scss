@@ -98,7 +98,8 @@ button:focus {
   margin: 0 auto;
 
   @include for-phone-only {
-    width: 354px;
+    width: 85%;
+    // width: 354px;
   }
 
   @include for-tablet-only {
