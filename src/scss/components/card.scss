@@ -135,12 +135,12 @@
     font-weight: 700;
     letter-spacing: 0.75px;
     line-height: 1.2;
-    max-width: 75%;
+    max-width: 80%;
     margin-bottom: 26px;
     color: $card-main-fc;
 
     @include for-tablet-only {
-      max-width: 85%;
+      max-width: 90%;
     }
 
     @include for-desktop-up {

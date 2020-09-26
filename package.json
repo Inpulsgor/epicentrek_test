@@ -2,6 +2,7 @@
   "name": "webpack-starter-kit",
   "version": "1.1.0",
   "description": "",
+  "homepage": "https://github.com/Inpulsgor/epicentrek_test#readme",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env.mode development --config ./webpack/config.js",
@@ -19,7 +20,6 @@
   "bugs": {
     "url": "https://github.com/Inpulsgor/epicentrek_test/issues"
   },
-  "homepage": "https://github.com/Inpulsgor/epicentrek_test#readme",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
