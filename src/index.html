@@ -50,14 +50,7 @@
           <!-- BODY description -->
           <div class="card-body__description body-description">
             <!-- details -->
-            <div class="body-description__details details js-details">
-              <!-- <span class="details__model">Model: 505795</span>
-              <h3 class="details__name">MOMENTUM® Wireless Black</h3>
-              <p class="details__about">Peak performance with active noise cancelation. Sennheiser's new MOMENTUM
-                Wireless -
-                Closed circumaural
-                headphone featuring Bluetooth® wireless technology and NoiseGard Hybrid active noise cancelation</p> -->
-            </div>
+            <div class="body-description__details details js-details"></div>
             <!-- rank & reviews -->
             <div class="body-description__rating rating js-rating">
               <ul class="rating__circles">
@@ -71,14 +64,11 @@
               <span class="rating__reviews">(153 reviews)</span> -->
             </div>
             <!-- price & colors -->
-            <div class="body-description__price price js-colors">
+            <div class="body-description__price price">
               <span class="price__amount js-amount">₴</span>
               <div class="price__color">
                 <span class="price__text">Choose your colors:</span>
-                <div class="price__buttons">
-                  <button class="price__button"></button>
-                  <button class="price__button"></button>
-                </div>
+                <div class="price__buttons js-colors"></div>
               </div>
             </div>
             <!-- quantity & add button -->
@@ -101,30 +91,28 @@
             <!-- gallery images carousel -->
             <div class="glide">
               <div class="glide__track" data-glide-el="track">
-                <ul class="glide__slides">
-                  <li class="glide__slide">
-                    <img class="glide__img" src="https://cdn.27.ua/499/cb/d9/1100761_9.jpeg" alt="product">
-                  </li>
-                </ul>
+                <!-- images list-->
+                <ul class="glide__slides js-slides"></ul>
+                <!-- gallery arrow controls-->
+                <div data-glide-el="controls" class="body-gallery__swipe swipe">
+                  <button data-glide-dir="<" class="swipe__left"></button>
+                  <span class="swipe__hand"></span>
+                  <button data-glide-dir=">" class="swipe__right"></button>
+                </div>
+
+                <!-- gallery navigation -->
+                <div data-glide-el="controls[nav]" class="body-gallery__navigation navigation glide__bullets">
+                  <button class="glide__bullet navigation__item " data-glide-dir="=0"></button>
+                  <button class="glide__bullet navigation__item " data-glide-dir="=1"></button>
+                  <button class="glide__bullet navigation__item " data-glide-dir="=2"></button>
+                </div>
+
               </div>
             </div>
-            <!-- gallery swipe arrow -->
-            <div class="body-gallery__swipe swipe">
-              <button class="swipe__left"></button>
-              <span class="swipe__hand"></span>
-              <button class="swipe__right"></button>
-            </div>
-            <!-- gallery navigation -->
-            <div class="body-gallery__navigation navigation">
-              <button class="navigation__item"></button>
-              <button class="navigation__item"></button>
-              <button class="navigation__item"></button>
-            </div>
-          </div>
 
+          </div>
         </div>
       </div>
-    </div>
   </main>
 </body>
 

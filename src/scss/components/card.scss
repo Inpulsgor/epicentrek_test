@@ -354,23 +354,31 @@
 // --- BODY GALLERY ---
 // gallery carousel
 .glide {
-  @include for-phone-only {
-    margin-bottom: 54px;
+  &__track {
   }
-  margin-bottom: 58px;
-}
 
-.glide__slide {
-  width: 100%;
-  text-align: center;
-}
+  &__slides {
+    margin-bottom: 60px;
 
-.glide__img {
-  max-width: 288px;
-  max-height: 360px;
-}
+    @include for-desktop-up {
+      margin-bottom: 50px;
+    }
+  }
 
-.card__gallery-slides {
+  &__slide {
+    width: 100%;
+    text-align: center;
+  }
+
+  &__img {
+    max-width: 288px;
+    max-height: 360px;
+
+    @include for-phone-s {
+      max-width: 100%;
+      max-height: 360px;
+    }
+  }
 }
 
 // gallery swipe

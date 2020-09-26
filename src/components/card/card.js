@@ -1,24 +1,32 @@
 // import Glide from '@glidejs/glide';
+import Glide, {
+  Controls,
+  Autoplay,
+} from '@glidejs/glide/dist/glide.modular.esm';
 
 import items from '../../services/ITEMS.json';
 import ratingMarkup from './templates/rating.hbs';
+import imagesTemplate from './templates/images.hbs';
 import colorsMarkup from './templates/colors.hbs'; //!
 // import detailsMarkup from './templates/details.hbs';
-// import helpers from '../../services/helpers';
+import helpers from '../../services/helpers';
 
+import '../../scss/glide/glide.core.scss';
 import '../../scss/components/card.scss';
 import '../../scss/components/sidebar.scss';
-import helpers from '../../services/helpers';
 
 let quantity = 1;
 // json data
 const data = items.ITEMS[0];
-const dataImages = items.ITEMS[0].IMAGES;
+const dataImages = items.ITEMS[0];
+const dataColors = items.ITEMS[0].MODELS.COLORS;
 const priceValue = Number(data.PRICE.slice(1));
 
+console.log(dataColors);
 console.log(data);
 // ================= QUERY SELECTOR =================
 // side bar
+const slides = document.querySelector('.js-slides');
 const brand = document.querySelector('.js-brand');
 const cartIconMain = document.querySelector('.js-cart-icon');
 const cartIconHeading = document.querySelector('.js-heading-cart');
@@ -141,44 +149,6 @@ function quantityPrice() {
   amount.innerHTML = `₴${result}`;
 }
 
-// ================= SLIDER =================
-// function getSlider() {
-//   const sliders = document.querySelectorAll('.glide');
-
-//   for (let i = 0; i < sliders.length; i += 1) {
-//     const glide = new Glide(sliders[i], {
-//       type: 'carousel',
-//       perView: 4,
-//       dots: '#dots',
-//       autoplay: 6000,
-//       breakpoints: {
-//         1279: {
-//           gap: 26,
-//           perView: 2,
-//         },
-//         767: {
-//           gap: 30,
-//           perView: 1,
-//         },
-//       },
-//     });
-//     glide.mount();
-//   }
-// }
-
-// curIndex = 0;
-// imgDuration = 2000;
-
-// function slideShow() {
-//   document.querySelector('.glide__slide').src = dataImages[curIndex];
-//   curIndex++;
-//   if (curIndex == imgArray.length) {
-//     curIndex = 0;
-//   }
-//   setTimeout('slideShow()', imgDuration);
-// }
-// slideShow();
-
 // ================= MARKUP =================
 
 const capitalizeWord =
@@ -199,10 +169,19 @@ function brandMarkup() {
   return `
       <img src="${data.BRAND.LOGO}" class="card-heading__logo">
   `;
-  // <span class="card-heading__name">${data.BRAND.NAME}</span>;
 }
 
+function colorBtnsMarkup() {
+  dataColors.map(color => console.log(color));
+  return `<button class="price__button"></button>`;
+}
+colorBtnsMarkup();
+
 // ----------------- render -----------------
+// colors
+// colors.innerHTML = colorsMarkup(dataColors);
+// slide images
+slides.innerHTML = imagesTemplate(dataImages);
 // brandName
 brand.innerHTML = brandMarkup();
 // details
@@ -212,3 +191,16 @@ price.innerHTML = `₴ ${priceValue}`;
 amountSidebar.innerHTML = `₴ ${priceValue}`;
 // rating
 rating.insertAdjacentHTML('beforeend', ratingMarkup(data));
+
+// ================= SLIDER =================
+new Glide('.glide', {
+  type: 'carousel',
+  perView: 1,
+  autoplay: 3000,
+  hoverpause: true,
+}).mount({ Controls, Autoplay });
+
+{
+  /* <button class="price__button"></button>
+<button class="price__button"></button> */
+}
