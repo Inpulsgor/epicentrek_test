@@ -7,13 +7,13 @@
  - `✓` при кліку на кнопку "Add to cart" відкривається кошик
  - дані кошика зберігаємо в **localStorage** (при оновленні сторінки кошик повинен бути збереженим)
  - `✓` виконане завдання розмістити в git ([github](https://github.com/), [gitlab](https://gitlab.com/), [bitbucket](https://bitbucket.org/))
----
+ 
 ## Основні вимоги:
  - валідна верстка;
  - кросбраузерність;
  - семантична верстка;
  - mobile first.
----
+
 ## Технічні вимоги:
  - Методологія [BEM](https://en.bem.info/methodology/);
  - Збірка проекту ([webpack](https://webpack.js.org/), [vue-cli](https://cli.vuejs.org/) або [nuxt](https://ru.nuxtjs.org/guides/get-started/installation));
@@ -21,4 +21,4 @@
  - js ([vue](https://vuejs.org/), [vuex](https://vuex.vuejs.org/ru/guide/));
  - буде плюсом використання [pug](https://pugjs.org/) (необов'язково).
 
----
+
