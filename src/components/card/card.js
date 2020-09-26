@@ -150,7 +150,6 @@ function quantityPrice() {
   // const rounded = result.toFixed(2);
   amount.innerHTML = `₴${result}`;
 }
-console.log(counter);
 // ================= MARKUP =================
 
 const capitalizeWord =
