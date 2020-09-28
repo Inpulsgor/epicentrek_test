@@ -1,4 +1,3 @@
-// import Glide from '@glidejs/glide';
 import Glide, {
   Controls,
   Autoplay,
@@ -24,6 +23,7 @@ const capitalizeWord =
   data.DESCRIPTION.charAt(0).toUpperCase() + data.DESCRIPTION.slice(1);
 
 let quantity = 1;
+let total = 0;
 let cropped = data.NAME;
 let lastIndex = cropped.lastIndexOf(' ');
 cropped = cropped.substring(0, lastIndex);
@@ -32,21 +32,21 @@ cropped = cropped.substring(0, lastIndex);
 // ================= REFERENCES =================
 
 // side bar
+const sidebarHeader = document.querySelector('.js-sidebar-head');
 const colorBtn = document.querySelector('.price__buttons');
-const slides = document.querySelector('.js-slides');
-const brand = document.querySelector('.js-brand');
 const cartIconMain = document.querySelector('.js-cart-icon');
 const cartIconHeading = document.querySelector('.js-heading-cart');
 const addToCartBtn = document.querySelector('.js-btn-add');
 // const sidebarUl = document.querySelector('.sidebar__list'); //! temporary not in use
 const sideBar = document.querySelector('.js-sidebar');
 const overlay = document.querySelector('.js-overlay');
-// quantity
+// cart
+const brand = document.querySelector('.js-brand');
 const counter = document.querySelector('.js-number');
 const price = document.querySelector('.js-amount');
-const amountSidebar = document.querySelector('.js-amount-sidebar');
 const increment = document.querySelector("[data-action='increment']");
 const decrement = document.querySelector("[data-action='decrement']");
+const slides = document.querySelector('.js-slides');
 // markup
 const details = document.querySelector('.js-details');
 const rating = document.querySelector('.js-rating'); // before end only!
@@ -78,6 +78,8 @@ function removeListener() {
 //! add button - temporary not in use!
 function pressAddBtn() {
   helpers.save('json', data);
+  // sidebarHeaderMarkup();
+  // openCart();
 }
 
 // ================= OPEN/CLOSE CART =================
@@ -159,9 +161,9 @@ function decrease() {
 }
 // price per quantity
 function quantityPrice() {
-  const result = quantity * priceValue;
+  total = quantity * priceValue;
   // const rounded = result.toFixed(2);
-  price.textContent = `₴${result}`;
+  price.textContent = `₴${total}`;
   // counter.textContent = quantity;
 }
 //! counter input value - temporary not in use!
@@ -175,43 +177,56 @@ function getInputValue(e) {
 }
 // ================= MARKUP =================
 
-// model, product name, product description - markup
-function detailsMarkup() {
-  return `
-    <span class="details__model">Model:${data.ID}</span>
-    <h3 class="details__name">${cropped}</h3>
-    <p class="details__about">${capitalizeWord}</p>`;
+// SIDEBAR header markup
+function sidebarHeaderMarkup() {
+  return;
+  `<button class="sidebar__heading-icon"></button>
+            <span class="sidebar__heading-text js-subtotal-sidebar">Subtotal (${quantity} item):</span>
+            <h4 class="sidebar__heading-price js-amount-sidebar">₴</h4>`;
 }
-// brand logo markup
-function brandMarkup() {
-  return `
-      <img src="${data.BRAND.LOGO}" class="card-heading__logo">
+// CARD details (model, product name, product description) markup
+function cardDetailsMarkup() {
+  const template = `
+  <span class="details__model">Model:${data.ID}</span>
+  <h3 class="details__name">${cropped}</h3>
+  <p class="details__about">${capitalizeWord}</p>`;
+  return (details.innerHTML = template);
+}
+// CARD brand logo markup
+function cardBrandMarkup() {
+  const template = `
+  <img src="${data.BRAND.LOGO}" class="card-heading__logo">
   `;
+  return (brand.innerHTML = template);
 }
-// color picket markup
-function colorBtnsMarkup() {
+// CARD color picker markup
+function cardColorMarkup() {
   const res = dataColors.reduce((acc, color) => {
     return (acc += `<button style="background-color: ${color.COLOR}" class="price__button"></button>`);
   }, '');
-  return res;
+  return colors.insertAdjacentHTML('beforeend', res);
 }
-// ================= DOM RENDER =================
+// CARD rating & reviews markup
+function cardRatingMarkup() {
+  return rating.insertAdjacentHTML('beforeend', ratingMarkup(data));
+}
+// CARD price markup
+function cardPriceMarkup() {
+  return (price.textContent = `₴${priceValue}`);
+}
+// CARD slider images markup
+function cardSliderImagesMarkup() {
+  return (slides.innerHTML = imagesTemplate(dataImages));
+}
 
-// colors
-colors.insertAdjacentHTML('beforeend', colorBtnsMarkup());
-// slide images
-slides.innerHTML = imagesTemplate(dataImages);
-// brandName
-brand.innerHTML = brandMarkup();
-// details
-details.innerHTML = detailsMarkup();
-// price
-price.textContent = `₴${priceValue}`;
-amountSidebar.innerHTML = `₴${priceValue}`;
-// rating
-rating.insertAdjacentHTML('beforeend', ratingMarkup(data));
+cardDetailsMarkup();
+cardBrandMarkup();
+cardColorMarkup();
+cardRatingMarkup();
+cardPriceMarkup();
+cardSliderImagesMarkup();
 
-// ================= SLIDER =================
+// ================= CARD IMAGES SLIDER =================
 
 new Glide('.glide', {
   type: 'carousel',
@@ -220,7 +235,7 @@ new Glide('.glide', {
   hoverpause: true,
 }).mount({ Controls, Autoplay });
 
-// ================= COLORS =================
+// ================= CARD COLOR PICKER =================
 
 const defaultSelected = colorBtn.childNodes[0].classList.add(
   'price__button_active',
