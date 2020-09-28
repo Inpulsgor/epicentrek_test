@@ -23,7 +23,6 @@ const capitalizeWord =
   data.DESCRIPTION.charAt(0).toUpperCase() + data.DESCRIPTION.slice(1);
 
 let quantity = 1;
-let total = 0;
 let cropped = data.NAME;
 let lastIndex = cropped.lastIndexOf(' ');
 cropped = cropped.substring(0, lastIndex);
@@ -32,6 +31,7 @@ cropped = cropped.substring(0, lastIndex);
 // ================= REFERENCES =================
 
 // side bar
+const sidebarTotal = document.querySelector('.js-price-sidebar');
 const sidebarHeader = document.querySelector('.js-sidebar-head');
 const colorBtn = document.querySelector('.price__buttons');
 const cartIconMain = document.querySelector('.js-cart-icon');
@@ -78,7 +78,8 @@ function removeListener() {
 //! add button - temporary not in use!
 function pressAddBtn() {
   helpers.save('json', data);
-  // sidebarHeaderMarkup();
+  sidebarHeaderMarkup();
+  sidebarSubtotal();
   // openCart();
 }
 
@@ -161,10 +162,15 @@ function decrease() {
 }
 // price per quantity
 function quantityPrice() {
-  total = quantity * priceValue;
+  const result = quantity * priceValue;
   // const rounded = result.toFixed(2);
-  price.textContent = `₴${total}`;
+  price.textContent = `₴${result}`;
   // counter.textContent = quantity;
+}
+// price per quantity
+function sidebarSubtotal() {
+  const result = quantity * priceValue;
+  sidebarTotal.textContent = `${result}`;
 }
 //! counter input value - temporary not in use!
 function getInputValue(e) {
@@ -179,10 +185,10 @@ function getInputValue(e) {
 
 // SIDEBAR header markup
 function sidebarHeaderMarkup() {
-  return;
-  `<button class="sidebar__heading-icon"></button>
+  const template = `  <button class="sidebar__heading-icon"></button>
             <span class="sidebar__heading-text js-subtotal-sidebar">Subtotal (${quantity} item):</span>
             <h4 class="sidebar__heading-price js-amount-sidebar">₴</h4>`;
+  return (sidebarHeader.innerHTML = template);
 }
 // CARD details (model, product name, product description) markup
 function cardDetailsMarkup() {
