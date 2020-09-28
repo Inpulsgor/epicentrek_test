@@ -40,9 +40,6 @@
       text-align: center;
       color: $card-white;
       background-color: $card-white;
-      // background-color: $card-logo-bg;
-      // background-position: center;
-      // background-image: url('../../images//logo.png');
 
       @include for-phone-s {
         max-width: 52%;
@@ -272,10 +269,12 @@
 
     &:not(:last-of-type) {
       margin-right: 11px;
-      // background-color: #3c383a;
-      // border: solid 2px$card-white;
-      // box-shadow: 0 0 4px 1px $main-bg;
     }
+  }
+
+  &__button:hover {
+    transition: box-shadow 0.2s ease-in-out;
+    box-shadow: 0 0 4px 1px $main-bg;
   }
 }
 // description quantity
@@ -356,6 +355,13 @@
       min-width: 37%;
       font-size: 13px;
     }
+  }
+
+  &__button-add:hover {
+    background-color: #3956fc;
+    transform: scale(1.01);
+    transition: scale 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
   }
 }
 
