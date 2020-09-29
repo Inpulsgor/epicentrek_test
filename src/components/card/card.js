@@ -14,13 +14,12 @@ import '../../scss/components/sidebar.scss';
 
 // ================= VARIABLES =================
 
-// JSON data
-const data = items.ITEMS[0];
-const dataImages = items.ITEMS[0];
-const dataColors = items.ITEMS[0].MODELS.COLORS;
-const priceValue = Number(data.PRICE.slice(1));
+const data = items.ITEMS[0]; // JSON data
+const dataImages = items.ITEMS[0]; // JSON images array
+const dataColors = items.ITEMS[0].MODELS.COLORS; // JSON colors array
+const priceValue = Number(data.PRICE.slice(1)); // JSON price
 const capitalizeWord =
-  data.DESCRIPTION.charAt(0).toUpperCase() + data.DESCRIPTION.slice(1);
+  data.DESCRIPTION.charAt(0).toUpperCase() + data.DESCRIPTION.slice(1); // JSON description
 
 let quantity = 1;
 let cropped = data.NAME;
@@ -28,29 +27,30 @@ let lastIndex = cropped.lastIndexOf(' ');
 cropped = cropped.substring(0, lastIndex);
 
 // console.log(data);
+console.log(dataImages);
 // ================= REFERENCES =================
 
 // side bar
-const sidebarTotal = document.querySelector('.js-price-sidebar');
-const sidebarHeader = document.querySelector('.js-sidebar-head');
-const colorBtn = document.querySelector('.price__buttons');
-const cartIconMain = document.querySelector('.js-cart-icon');
-const cartIconHeading = document.querySelector('.js-heading-cart');
-const addToCartBtn = document.querySelector('.js-btn-add');
-// const sidebarUl = document.querySelector('.sidebar__list'); //! temporary not in use
-const sideBar = document.querySelector('.js-sidebar');
 const overlay = document.querySelector('.js-overlay');
+const sidebarList = document.querySelector('.js-sidebar-list');
+const sidebarPrice = document.querySelector('.js-sidebar-subtotal');
+const sidebarTotal = document.querySelector('.js-sidebar-price');
+const sidebar = document.querySelector('.js-sidebar');
+
 // cart
-const brand = document.querySelector('.js-brand');
-const counter = document.querySelector('.js-number');
-const price = document.querySelector('.js-amount');
 const increment = document.querySelector("[data-action='increment']");
 const decrement = document.querySelector("[data-action='decrement']");
-const slides = document.querySelector('.js-slides');
-// markup
+const brand = document.querySelector('.js-brand');
 const details = document.querySelector('.js-details');
 const rating = document.querySelector('.js-rating'); // before end only!
+const counter = document.querySelector('.js-number');
+const price = document.querySelector('.js-amount');
 const colors = document.querySelector('.js-colors');
+const slides = document.querySelector('.js-slides');
+const cartColorBtn = document.querySelector('.price__buttons');
+const cartIconMain = document.querySelector('.js-cart-icon');
+const cartIconHeading = document.querySelector('.js-heading-cart');
+const cartAddToBtn = document.querySelector('.js-btn-add');
 
 // ================= LISTENERS =================
 
@@ -59,7 +59,7 @@ addListener();
 function addListener() {
   // counter.addEventListener('input', getInputValue);
   colors.addEventListener('click', setColor);
-  addToCartBtn.addEventListener('click', pressAddBtn);
+  cartAddToBtn.addEventListener('click', pressAddBtn);
   cartIconHeading.addEventListener('click', headingCart);
   cartIconMain.addEventListener('click', openCart);
   overlay.addEventListener('click', closeCart);
@@ -75,12 +75,14 @@ function removeListener() {
 }
 
 // ================= ADD TO CART BUTTON =================
-//! add button - temporary not in use!
+// add button
 function pressAddBtn() {
   helpers.save('json', data);
+  window.addEventListener('keydown', closeByPressEsc);
+
   sidebarHeaderMarkup();
-  sidebarSubtotal();
-  // openCart();
+  sidebar.classList.add('expanded');
+  overlay.classList.add('overlay');
 }
 
 // ================= OPEN/CLOSE CART =================
@@ -90,7 +92,7 @@ function headingCart(e) {
 
   if (!e.currentTarget) return;
   if (e.currentTarget) {
-    sideBar.classList.add('expanded');
+    sidebar.classList.add('expanded');
     overlay.classList.add('overlay');
     window.addEventListener('keydown', closeByPressEsc);
   }
@@ -101,7 +103,7 @@ function openCart(e) {
 
   if (!e.currentTarget) return;
   if (e.currentTarget) {
-    sideBar.classList.add('expanded');
+    sidebar.classList.add('expanded');
     overlay.classList.add('overlay');
     window.addEventListener('keydown', closeByPressEsc);
   }
@@ -116,6 +118,7 @@ function closeCart(e) {
 function closeByPressEsc(e) {
   if (e.code === 'Escape') {
     removeClass();
+    window.removeEventListener('keydown', closeByPressEsc);
   }
 }
 //! close on close button - temporary not in use!
@@ -127,7 +130,7 @@ function closeOnButtonClick(e) {
 }
 // remove active class
 function removeClass() {
-  sideBar.classList.remove('expanded');
+  sidebar.classList.remove('expanded');
   overlay.classList.remove('overlay');
 }
 // ================= QUANTITY/PRICE =================
@@ -167,13 +170,9 @@ function quantityPrice() {
   price.textContent = `₴${result}`;
   // counter.textContent = quantity;
 }
-// price per quantity
-function sidebarSubtotal() {
-  const result = quantity * priceValue;
-  sidebarTotal.textContent = `${result}`;
-}
 //! counter input value - temporary not in use!
 function getInputValue(e) {
+  console.log('input event!');
   if (isNaN(e.currentTarget.value)) {
     return;
   }
@@ -185,10 +184,26 @@ function getInputValue(e) {
 
 // SIDEBAR header markup
 function sidebarHeaderMarkup() {
-  const template = `  <button class="sidebar__heading-icon"></button>
-            <span class="sidebar__heading-text js-subtotal-sidebar">Subtotal (${quantity} item):</span>
-            <h4 class="sidebar__heading-price js-amount-sidebar">₴</h4>`;
-  return (sidebarHeader.innerHTML = template);
+  const result = quantity * priceValue;
+
+  sidebarPrice.textContent = `₴${result}`;
+  sidebarTotal.textContent =
+    quantity > 1
+      ? `Subtotal (${quantity} items):`
+      : `Subtotal (${quantity} item):`;
+  sidebarList.innerHTML = `  
+          <li class="sidebar__body-item">
+            <div class="sidebar__body-container">
+              <button class="sidebar__body-button_delete"></button>
+              <img  class="sidebar__body-img"/>
+              <p class="sidebar__body-description"></p>
+              <span class="sidebar__body-price"></span>
+              <div class="sidebar__body-counter quantity__counter">
+                <input readonly value="01" type="text" min="1" max="99" maxlength="2"
+                    class="sidebar__body-input quantity__counter-number js-number">
+              </div>
+            </div>
+          </li>`;
 }
 // CARD details (model, product name, product description) markup
 function cardDetailsMarkup() {
@@ -243,7 +258,7 @@ new Glide('.glide', {
 
 // ================= CARD COLOR PICKER =================
 
-const defaultSelected = colorBtn.childNodes[0].classList.add(
+const defaultSelected = cartColorBtn.childNodes[0].classList.add(
   'price__button_active',
 );
 

@@ -18,14 +18,16 @@
       <div class="sidebar">
         <div class="sidebar__cart js-sidebar">
           <!-- sidebar heading -->
-          <div class="sidebar__heading js-sidebar-head">
-            <button class="sidebar__heading-icon"></button>
-            <span class="sidebar__heading-text js-subtotal-sidebar">Subtotal (1 item):</span>
-            <h4 class="sidebar__heading-price js-price-sidebar"></h4>
+          <div class="sidebar__heading">
+            <span class="sidebar__heading-icon"></span>
+            <div class="sidebar__heading-wrapper">
+              <span class="sidebar__heading-text js-sidebar-price"></span>
+              <span class="sidebar__heading-price js-sidebar-subtotal"></span>
+            </div>
           </div>
           <!-- sidebar body -->
           <div class="sidebar__body">
-            <ul class="sidebar__body-list"></ul>
+            <ul class="sidebar__body-list js-sidebar-list"></ul>
           </div>
           <!-- sidebar footer -->
           <div class="sidebar__footer">
