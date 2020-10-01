@@ -3,12 +3,12 @@ import Glide, {
   Autoplay,
 } from '@glidejs/glide/dist/glide.modular.esm';
 
-import items from '../../services/ITEMS.json';
+import items from '../../services/ITEMS.json'; // JSON
 import ratingMarkup from './templates/rating.hbs';
 import imagesTemplate from './templates/images.hbs';
 import helpers from '../../services/helpers';
 // styles
-import '../../scss/glide/glide.core.scss';
+import '../../scss/components/glide/glide.core.scss';
 import '../../scss/components/card.scss';
 import '../../scss/components/sidebar.scss';
 
