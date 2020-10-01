@@ -27,7 +27,7 @@ let lastIndex = cropped.lastIndexOf(' ');
 cropped = cropped.substring(0, lastIndex);
 
 // console.log(data);
-console.log(dataImages);
+
 // ================= REFERENCES =================
 
 // side bar
@@ -75,6 +75,7 @@ function removeListener() {
 }
 
 // ================= ADD TO CART BUTTON =================
+
 // add button
 function pressAddBtn() {
   helpers.save('json', data);
@@ -86,6 +87,7 @@ function pressAddBtn() {
 }
 
 // ================= OPEN/CLOSE CART =================
+
 // open cart
 function headingCart(e) {
   e.stopPropagation();
@@ -121,7 +123,7 @@ function closeByPressEsc(e) {
     window.removeEventListener('keydown', closeByPressEsc);
   }
 }
-//! close on close button - temporary not in use!
+//! close on button click - temporary not in use!
 function closeOnButtonClick(e) {
   if (e.target.nodeName === 'BUTTON') {
     removeClass();
@@ -133,7 +135,9 @@ function removeClass() {
   sidebar.classList.remove('expanded');
   overlay.classList.remove('overlay');
 }
+
 // ================= QUANTITY/PRICE =================
+
 // increase quantity +1
 function increase() {
   if (quantity >= 99) {
@@ -180,18 +184,13 @@ function getInputValue(e) {
   counter.setAttribute('value', `0${quantity}`);
   quantityPrice();
 }
+
 // ================= MARKUP =================
 
 // SIDEBAR header markup
 function sidebarHeaderMarkup() {
   const result = quantity * priceValue;
-
-  sidebarPrice.textContent = `₴${result}`;
-  sidebarTotal.textContent =
-    quantity > 1
-      ? `Subtotal (${quantity} items):`
-      : `Subtotal (${quantity} item):`;
-  sidebarList.innerHTML = `  
+  const template = `  
           <li class="sidebar__body-item">
             <div class="sidebar__body-container">
               <button class="sidebar__body-button_delete"></button>
@@ -204,6 +203,13 @@ function sidebarHeaderMarkup() {
               </div>
             </div>
           </li>`;
+
+  sidebarPrice.textContent = `₴${result}`;
+  sidebarTotal.textContent =
+    quantity > 1
+      ? `Subtotal (${quantity} items):`
+      : `Subtotal (${quantity} item):`;
+  sidebarList.insertAdjacentHTML('afterbegin', template);
 }
 // CARD details (model, product name, product description) markup
 function cardDetailsMarkup() {
@@ -211,21 +217,24 @@ function cardDetailsMarkup() {
   <span class="details__model">Model:${data.ID}</span>
   <h3 class="details__name">${cropped}</h3>
   <p class="details__about">${capitalizeWord}</p>`;
-  return (details.innerHTML = template);
+
+  return details.insertAdjacentHTML('afterbegin', template);
 }
 // CARD brand logo markup
 function cardBrandMarkup() {
   const template = `
   <img src="${data.BRAND.LOGO}" class="card-heading__logo">
   `;
-  return (brand.innerHTML = template);
+
+  return brand.insertAdjacentHTML('afterbegin', template);
 }
 // CARD color picker markup
 function cardColorMarkup() {
-  const res = dataColors.reduce((acc, color) => {
+  const template = dataColors.reduce((acc, color) => {
     return (acc += `<button style="background-color: ${color.COLOR}" class="price__button"></button>`);
   }, '');
-  return colors.insertAdjacentHTML('beforeend', res);
+
+  return colors.insertAdjacentHTML('beforeend', template);
 }
 // CARD rating & reviews markup
 function cardRatingMarkup() {
@@ -237,7 +246,7 @@ function cardPriceMarkup() {
 }
 // CARD slider images markup
 function cardSliderImagesMarkup() {
-  return (slides.innerHTML = imagesTemplate(dataImages));
+  return slides.insertAdjacentHTML('afterbegin', imagesTemplate(dataImages));
 }
 
 cardDetailsMarkup();
@@ -258,10 +267,11 @@ new Glide('.glide', {
 
 // ================= CARD COLOR PICKER =================
 
+// set firs color element selected by default
 const defaultSelected = cartColorBtn.childNodes[0].classList.add(
   'price__button_active',
 );
-
+// set active color
 function setColor(e) {
   if (e.currentTarget === e.target) return;
   const activeLink = e.currentTarget.querySelector('.price__button_active');
