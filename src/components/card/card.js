@@ -14,18 +14,9 @@ import '../../scss/components/sidebar.scss';
 
 // ================= VARIABLES =================
 
-const data = items.ITEMS[0]; // JSON data
-const dataImages = items.ITEMS[0]; // JSON images array
-const dataColors = items.ITEMS[0].MODELS.COLORS; // JSON colors array
-const priceValue = Number(data.PRICE.slice(1)); // JSON price
-const capitalizeWord =
-  data.DESCRIPTION.charAt(0).toUpperCase() + data.DESCRIPTION.slice(1); // JSON description
-
 let quantity = 1;
-let cropped = data.NAME;
-let lastIndex = cropped.lastIndexOf(' ');
-cropped = cropped.substring(0, lastIndex);
-
+const data = items.ITEMS[0]; // JSON data
+const priceValue = Number(data.PRICE.slice(1)); // JSON data price
 // console.log(data);
 
 // ================= REFERENCES =================
@@ -206,22 +197,28 @@ function sidebarHeaderMarkup() {
 
   sidebarPrice.textContent = `₴${result}`;
   sidebarTotal.textContent =
-    quantity > 1
-      ? `Subtotal (${quantity} items):`
-      : `Subtotal (${quantity} item):`;
+    quantity > 1 ?
+    `Subtotal (${quantity} items):` :
+    `Subtotal (${quantity} item):`;
   sidebarList.insertAdjacentHTML('afterbegin', template);
 }
 // CARD details (model, product name, product description) markup
-function cardDetailsMarkup() {
+function cardDetailsMarkup(data) {
+  const name = data.NAME;
+  const lastIndex = name.lastIndexOf(' ');
+  const croppedName = name.substring(0, lastIndex);
+  const capitalizeWord =
+    data.DESCRIPTION.charAt(0).toUpperCase() + data.DESCRIPTION.slice(1);
+
   const template = `
   <span class="details__model">Model:${data.ID}</span>
-  <h3 class="details__name">${cropped}</h3>
+  <h3 class="details__name">${croppedName}</h3>
   <p class="details__about">${capitalizeWord}</p>`;
 
   return details.insertAdjacentHTML('afterbegin', template);
 }
 // CARD brand logo markup
-function cardBrandMarkup() {
+function cardBrandMarkup(data) {
   const template = `
   <img src="${data.BRAND.LOGO}" class="card-heading__logo">
   `;
@@ -229,7 +226,8 @@ function cardBrandMarkup() {
   return brand.insertAdjacentHTML('afterbegin', template);
 }
 // CARD color picker markup
-function cardColorMarkup() {
+function cardColorMarkup(data) {
+  const dataColors = data.MODELS.COLORS;
   const template = dataColors.reduce((acc, color) => {
     return (acc += `<button style="background-color: ${color.COLOR}" class="price__button"></button>`);
   }, '');
@@ -237,24 +235,24 @@ function cardColorMarkup() {
   return colors.insertAdjacentHTML('beforeend', template);
 }
 // CARD rating & reviews markup
-function cardRatingMarkup() {
+function cardRatingMarkup(data) {
   return rating.insertAdjacentHTML('beforeend', ratingMarkup(data));
 }
 // CARD price markup
-function cardPriceMarkup() {
+function cardPriceMarkup(priceValue) {
   return (price.textContent = `₴${priceValue}`);
 }
 // CARD slider images markup
-function cardSliderImagesMarkup() {
-  return slides.insertAdjacentHTML('afterbegin', imagesTemplate(dataImages));
+function cardSliderImagesMarkup(data) {
+  return slides.insertAdjacentHTML('afterbegin', imagesTemplate(data));
 }
 
-cardDetailsMarkup();
-cardBrandMarkup();
-cardColorMarkup();
-cardRatingMarkup();
-cardPriceMarkup();
-cardSliderImagesMarkup();
+cardDetailsMarkup(data);
+cardBrandMarkup(data);
+cardColorMarkup(data);
+cardRatingMarkup(data);
+cardPriceMarkup(priceValue);
+cardSliderImagesMarkup(data);
 
 // ================= CARD IMAGES SLIDER =================
 
@@ -263,7 +261,10 @@ new Glide('.glide', {
   perView: 1,
   autoplay: 3000,
   hoverpause: true,
-}).mount({ Controls, Autoplay });
+}).mount({
+  Controls,
+  Autoplay
+});
 
 // ================= CARD COLOR PICKER =================
 
