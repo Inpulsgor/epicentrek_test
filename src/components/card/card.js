@@ -44,6 +44,9 @@ const cartIconMainQuantity = document.querySelector('.js-cart-qt');
 const cartIconHeading = document.querySelector('.js-heading-cart');
 const cartIconHeadingQuantity = document.querySelector('.js-cart-quantity');
 const cartAddToBtn = document.querySelector('.js-btn-add');
+const cartIconSidebar = document.querySelector('.js-head-q');
+const cartItemDelete = document.querySelector('.js-delete');
+console.log(cartItemDelete);
 
 // ================= LISTENERS =================
 
@@ -58,6 +61,10 @@ function addListener() {
   overlay.addEventListener('click', closeCart);
   increment.addEventListener('click', increase);
   decrement.addEventListener('click', decrease);
+
+  if (cartItemDelete) {
+    cartItemDelete.addEventListener('click', handleDeleteItem);
+  }
 }
 // remove listener
 function removeListener() {
@@ -117,10 +124,12 @@ function closeByPressEsc(e) {
   }
 }
 //! close on button click - temporary not in use!
-function closeOnButtonClick(e) {
+function handleDeleteItem(e) {
+  console.log('click');
   if (e.target.nodeName === 'BUTTON') {
-    removeClass();
-    removeListener();
+    // removeClass();
+    // removeListener();
+    localStorage.removeItem('json');
   }
 }
 // remove active class
@@ -186,10 +195,15 @@ function cartQuantityMarkup() {
   cartIconHeadingQuantity.textContent = quantity;
   cartIconMainQuantity.classList.add('qt');
   cartIconMainQuantity.textContent = quantity;
+  cartIconSidebar.classList.add('qt');
+  cartIconSidebar.textContent = quantity;
 }
 
 // SIDEBAR header markup
 function sidebarHeaderMarkup(localData) {
+  if (!localData) {
+    return;
+  }
   console.log(localData);
   const priceValue = Number(data.PRICE.slice(1));
   const name = localData.NAME;
@@ -200,7 +214,7 @@ function sidebarHeaderMarkup(localData) {
   const template = `  
           <li class="sidebar__body-item">
             <div class="sidebar__body-container">
-              <button class="sidebar__body-button_delete"></button>
+              <button class="sidebar__body-button_delete js-delete"></button>
               <img src=${localData.IMAGES[0]} class="sidebar__body-img"/>
               <p class="sidebar__body-description">${croppedName}</p>
               <span class="sidebar__body-price">₴${priceValue}</span>
