@@ -18,7 +18,7 @@ let quantity = 1;
 const data = items.ITEMS[0]; // JSON data
 const priceValue = Number(data.PRICE.slice(1)); // JSON data price
 // console.log(data);
-
+const localData = helpers.load('json');
 // ================= REFERENCES =================
 
 // side bar
@@ -40,7 +40,9 @@ const colors = document.querySelector('.js-colors');
 const slides = document.querySelector('.js-slides');
 const cartColorBtn = document.querySelector('.price__buttons');
 const cartIconMain = document.querySelector('.js-cart-icon');
+const cartIconMainQuantity = document.querySelector('.js-cart-qt');
 const cartIconHeading = document.querySelector('.js-heading-cart');
+const cartIconHeadingQuantity = document.querySelector('.js-cart-quantity');
 const cartAddToBtn = document.querySelector('.js-btn-add');
 
 // ================= LISTENERS =================
@@ -57,7 +59,6 @@ function addListener() {
   increment.addEventListener('click', increase);
   decrement.addEventListener('click', decrease);
 }
-
 // remove listener
 function removeListener() {
   cartIconMain.removeEventListener('click', openCart);
@@ -75,8 +76,9 @@ function pressAddBtn() {
   sidebarHeaderMarkup();
   sidebar.classList.add('expanded');
   overlay.classList.add('overlay');
-}
 
+  cartQuantityMarkup();
+}
 // ================= OPEN/CLOSE CART =================
 
 // open cart
@@ -178,16 +180,30 @@ function getInputValue(e) {
 
 // ================= MARKUP =================
 
+// CART quantity
+function cartQuantityMarkup() {
+  cartIconHeadingQuantity.classList.add('qt');
+  cartIconHeadingQuantity.textContent = quantity;
+  cartIconMainQuantity.classList.add('qt');
+  cartIconMainQuantity.textContent = quantity;
+}
+
 // SIDEBAR header markup
-function sidebarHeaderMarkup() {
+function sidebarHeaderMarkup(localData) {
+  console.log(localData);
+  const priceValue = Number(data.PRICE.slice(1));
+  const name = localData.NAME;
+  const lastIndex = name.lastIndexOf(' ');
+  const croppedName = name.substring(0, lastIndex);
   const result = quantity * priceValue;
+
   const template = `  
           <li class="sidebar__body-item">
             <div class="sidebar__body-container">
               <button class="sidebar__body-button_delete"></button>
-              <img  class="sidebar__body-img"/>
-              <p class="sidebar__body-description"></p>
-              <span class="sidebar__body-price"></span>
+              <img src=${localData.IMAGES[0]} class="sidebar__body-img"/>
+              <p class="sidebar__body-description">${croppedName}</p>
+              <span class="sidebar__body-price">₴${priceValue}</span>
               <div class="sidebar__body-counter quantity__counter">
                 <input readonly value="01" type="text" min="1" max="99" maxlength="2"
                     class="sidebar__body-input quantity__counter-number js-number">
@@ -196,11 +212,22 @@ function sidebarHeaderMarkup() {
           </li>`;
 
   sidebarPrice.textContent = `₴${result}`;
-  sidebarTotal.textContent =
-    quantity > 1 ?
-    `Subtotal (${quantity} items):` :
-    `Subtotal (${quantity} item):`;
-  sidebarList.insertAdjacentHTML('afterbegin', template);
+  sidebarTotal.insertAdjacentText(
+    'beforeend',
+    quantity > 1
+      ? `Subtotal (${quantity} items):`
+      : `Subtotal (${quantity} item):`,
+  );
+
+  // sidebarList.insertAdjacentHTML('afterbegin', template);
+  sidebarList.innerHTML = template;
+}
+// CARD basket quantity
+function cartQuantity(localData) {
+  if (localData) {
+    cartQuantityMarkup();
+    sidebarHeaderMarkup(localData);
+  }
 }
 // CARD details (model, product name, product description) markup
 function cardDetailsMarkup(data) {
@@ -247,6 +274,7 @@ function cardSliderImagesMarkup(data) {
   return slides.insertAdjacentHTML('afterbegin', imagesTemplate(data));
 }
 
+cartQuantity(localData);
 cardDetailsMarkup(data);
 cardBrandMarkup(data);
 cardColorMarkup(data);
@@ -263,7 +291,7 @@ new Glide('.glide', {
   hoverpause: true,
 }).mount({
   Controls,
-  Autoplay
+  Autoplay,
 });
 
 // ================= CARD COLOR PICKER =================
