@@ -9,16 +9,16 @@
  - [x] виконане завдання розмістити в git ([github](https://github.com/), [gitlab](https://gitlab.com/), [bitbucket](https://bitbucket.org/))
  
 ## Основні вимоги:
- - валідна верстка;
- - кросбраузерність;
- - семантична верстка;
- - mobile first.
+ - валідна верстка
+ - кросбраузерність
+ - семантична верстка
+ - mobile first
 
 ## Технічні вимоги:
- - Методологія [BEM](https://en.bem.info/methodology/);
- - Збірка проекту ([webpack](https://webpack.js.org/), [vue-cli](https://cli.vuejs.org/) або [nuxt](https://ru.nuxtjs.org/guides/get-started/installation));
- - css (препроцесор [SCSS](https://sass-lang.com/), Flexbox, буде плюсом використання постпроцесора [PostCSS](https://postcss.org/), не використовувати css-фреймворки (bootstrap, foundation та інші));
+ - Методологія [BEM](https://en.bem.info/methodology/)
+ - Збірка проекту ([webpack](https://webpack.js.org/), [vue-cli](https://cli.vuejs.org/) або [nuxt](https://ru.nuxtjs.org/guides/get-started/installation))
+ - css (препроцесор [SCSS](https://sass-lang.com/), Flexbox, буде плюсом використання постпроцесора [PostCSS](https://postcss.org/), не використовувати css-фреймворки (bootstrap, foundation та інші))
  - js ([vue](https://vuejs.org/), [vuex](https://vuex.vuejs.org/ru/guide/));
- - буде плюсом використання [pug](https://pugjs.org/) (необов'язково).
+ - буде плюсом використання [pug](https://pugjs.org/) (необов'язково)
 
 
